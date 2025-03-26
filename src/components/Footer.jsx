@@ -1,21 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <>
-      <footer className="mb-0 text-center">
-        <div className="d-flex align-items-center justify-content-center pb-5">
-          <div className="col-md-6">
-            <p className="mb-3 mb-md-0"> @ copyrights 2025 - 
-              <a  href="https://sahibsingh.dev" className="text-decoration-underline text-dark fs-5" target="_blank" rel="noreferrer">Savarkar</a>
-            </p>
-            <a className="text-dark fs-4" href="https://github.com/ssahibsingh" target="_blank" rel="noreferrer">
-              <i className="fa fa-github"></i>
-            </a>
-          </div>
+    <footer className="bg-dark text-white text-center py-3 mt-5">
+      <div className="container">
+        <p className="mb-2">© {new Date().getFullYear()} React E-commerce. All rights reserved.</p>
+        <div>
+          <Link className="text-white me-3" to="/about">About Us</Link>
+          <Link className="text-white me-3" to="/contact">Contact</Link>
+          <Link className="text-white" to="/privacy">Privacy Policy</Link>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 };
 

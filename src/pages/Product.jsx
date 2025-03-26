@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
 
 import { Footer, Navbar } from "../components";
+import "./productDetails.css"
 
 const Product = () => {
   const { id } = useParams();
@@ -62,19 +63,49 @@ const Product = () => {
   };
 
   const ShowProduct = () => {
+    const productImages = [
+      "https://m.media-amazon.com/images/I/61dbLSONDqL._SX679_.jpg",
+"https://m.media-amazon.com/images/I/51kxi+dIlJL._SX679_.jpg",
+"https://m.media-amazon.com/images/I/51lRPaiQwjL._SX679_.jpg",
+"https://m.media-amazon.com/images/I/61iAv+9hwgL._SX679_.jpg"
+    ];
+    const newArray =[
+...productImages, product.image
+    ]
+    const [img, setimg] = useState(product.image);
+  // State for the main displayed image
+  const [mainImage, setMainImage] = useState(newArray[0]);
     return (
       <>
-        <div className="container my-5 py-2">
+       
+        {/* Left Side - Product Images */}
+       
           <div className="row">
             <div className="col-md-6 col-sm-12 py-3">
-              <img
+              {/* <img
                 className="img-fluid"
                 src={product.image}
                 alt={product.title}
                 width="400px"
                 height="400px"
+              /> */}
+
+<div className="main-image-container">
+            <img src={img} alt={product.title} className="img-fluid main-image" />
+          </div>
+          <div className="thumbnail-container mt-3">
+            {newArray.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`Thumbnail ${index + 1}`}
+                className={`thumbnail ${mainImage === img ? "active" : ""}`}
+                onClick={() => setimg(img)}
               />
+            ))}
+          </div>
             </div>
+            
             <div className="col-md-6 col-md-6 py-5">
               <h4 className="text-uppercase text-muted">{product.category}</h4>
               <h1 className="display-5">{product.title}</h1>
@@ -95,7 +126,6 @@ const Product = () => {
               </Link>
             </div>
           </div>
-        </div>
       </>
     );
   };
