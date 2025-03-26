@@ -5,6 +5,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { SearchProvider } from "./components/SearchContext"; // Import SearchProvider
 
 import {
   Home,
@@ -26,6 +27,7 @@ root.render(
   <BrowserRouter>
     <ScrollToTop>
       <Provider store={store}>
+      <SearchProvider> {/* Wrap inside SearchProvider */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product" element={<Products />} />
@@ -39,6 +41,7 @@ root.render(
           <Route path="*" element={<PageNotFound />} />
           <Route path="/product/*" element={<PageNotFound />} />
         </Routes>
+        </SearchProvider>
       </Provider>
     </ScrollToTop>
     <Toaster />

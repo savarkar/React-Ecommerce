@@ -20,3 +20,9 @@ export const clearCart = () =>{
         type:"CLEAR_CART",
     }
 }
+
+export const SearchData = () =>{
+    return {
+        type:"FILTER_CART",
+    }
+}

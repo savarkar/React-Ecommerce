@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Footer, Navbar } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import { addCart, delCart, clearCart } from "../redux/action";
